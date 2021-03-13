@@ -1,0 +1,11 @@
+GoogleApiKey
+AIzaSyBU0g65WUQ166GW7rAElcwDMmllyCUr5yc
+
+
+
+Accessing credentials for mewtwoxp in project restaurants
+Google Certificate Fingerprint:     17:1C:7C:1A:AC:82:F2:8D:00:7F:53:56:87:E4:33:A6:6B:2E:B1:3A
+Google Certificate Hash (SHA-1):    171C7C1AAC82F28D007F535687E433A66B2EB13A
+Google Certificate Hash (SHA-256):  CACCC6A79C66E6EE8DB0534C22631B645C81FA1FC96A776AE4D0BACD8B3C5845
+Facebook Key Hash:                  Fxx8GqyC8o0Af1NWh+QzpmsusTo=
+

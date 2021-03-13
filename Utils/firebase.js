@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyBTqt0Rox7rvRzKD_VazYUFTOpAHSsAo24",
   authDomain: "restaurants-e98ba.firebaseapp.com",
   projectId: "restaurants-e98ba",
