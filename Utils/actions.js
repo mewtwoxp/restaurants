@@ -1,7 +1,7 @@
 import { firebaseApp } from "./firebase";
 import * as firebase from 'firebase'
 import 'firebase/firestore'
-import { padStart } from "lodash";
+import { map, padStart } from "lodash";
 import { fileToBlob } from "./helpers";
 
 const db = firebaseApp.firestore(firebaseApp)
@@ -238,6 +238,34 @@ export const removeIsFavorite = async (idRestaurant) => {
                 const favoriteId = doc.id
                 await db.collection("favorites").doc(favoriteId).delete()
             })
+            } catch (error) {
+            result.statusReponse = false
+            result.error = error
+        }
+    return result
+}
+
+export const getFavorites = async () => {
+    const result = { statusReponse: true, error: null, favorites: [] }
+        try {
+            const response = await db.collection("favorites")
+                .where("idUser", "==", getCurrentUser().uid)
+                .get()
+            
+            const restaurantsId =  []
+            response.forEach((doc) => {
+                const favorite = doc.data()
+                restaurantsId.push(favorite.idRestaurant)
+            })
+
+            await Promise.all(
+                map(restaurantsId, async(restaurantId) => {
+                    const response2 = await getDocumentById("restaurants", restaurantId)
+                    if (response2.statusReponse) {
+                        result.favorites.push(response2.document)
+                    }
+                })
+            )
             } catch (error) {
             result.statusReponse = false
             result.error = error

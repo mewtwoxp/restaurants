@@ -69,7 +69,7 @@ export default function ListReviews({ navigation, idRestaurant }) {
 
 function Review ({ reviewDocument }) {
     const { title, review, createAt, avatarUser, rating } = reviewDocument
-    const createReview = new Date(createAt.seconds * 10000)
+    const createReview = new Date(createAt.seconds * 1000)
     console.log("LLeque hasta aqui")
     return (
         <View style={styles.viewReview}>
