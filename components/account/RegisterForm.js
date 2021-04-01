@@ -5,7 +5,7 @@ import { Button, Icon, Input } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 
 import { validateEmail } from '../../Utils/helpers'
-import { registerUser } from '../../Utils/actions'
+import { addDocumentWithId, getCurrentUser, getToken, registerUser } from '../../Utils/actions'
 import Loading from '../Loading'
 
 export default function RegisterForm() {
@@ -29,13 +29,22 @@ export default function RegisterForm() {
 
         setLoading(true)
         const result = await registerUser(formData.email, formData.password)
-        setLoading(false)
 
         if (!result.statusResponse) {
+            setLoading(false)
             setErrorEmail(result.error)
             return
         }
 
+        const token = await getToken()
+        const resultUser = await addDocumentWithId("users", { token }, getCurrentUser().uid)
+        if (!resultUser.statusResponse) {
+            setLoading(false)
+            return
+        }
+
+
+        setLoading(false)
         navigation.navigate("account")
     }
 
