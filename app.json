@@ -18,10 +18,17 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.xenit.restaurants"
+      "bundleIdentifier": "com.xenit.restaurants",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.761699738677-h7stb02dd6mbs57n10nc0i40ee3kmd86"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package": "com.xenit.restaurants",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

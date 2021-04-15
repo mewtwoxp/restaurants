@@ -414,3 +414,14 @@ export const getUsersFavorite = async(restaurantId) => {
  
     return result
 }
+export const sendEmailResetPassword = async(email) => {
+    const result = { statusReponse: true, error: null }
+    try {
+        await firebase.auth().sendPasswordResetEmail(email)
+    } catch (error) {
+        result.statusReponse = false
+        result.error = error
+    }
+ 
+    return result
+}
